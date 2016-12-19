@@ -1,0 +1,92 @@
+
+ </br>
+ </br>
+
+ <button id="button1"> Enter Coordinates </button>
+ <button id="button2"> Enter Address </button>
+
+ <%= form_for Query.new,  :html => {:class => "form", :id=> "form1"} do |f| %>
+    <!-- start point -->
+  </br>
+
+    <%= f.label :start  %>
+  </br>
+     <%= f.label :latitude %>
+      <%= f.text_field :start_lat %>
+      <%= f.label :longitude %>
+       <%= f.text_field :start_lng %>
+ </br>
+ </br>
+       <!-- End point -->
+       <%= f.label :end %>
+     </br>
+
+       <%= f.label :latitude %>
+        <%= f.text_field :end_lat %>
+        <%= f.label :longitude %>
+         <%= f.text_field :end_lng %>
+ </br>
+</br>
+
+         <!-- mid point -->
+ </br>
+         <%= f.label :distance_covered %>
+         <%= f.text_field :distance_covered %>
+
+ </br>
+</br>
+
+       <%= f.submit "submit" %>
+ <% end %>
+
+
+<form action="/address_search" method="post" id="form2" class="form" role="form">
+   </br>
+   <div class="form-group">
+        <label class="col-sm-2 control-label"> Enter Origin </label>
+       <input type="text" name="origin">
+     </br>
+   </br>
+ </div>
+   <div class="form-group">
+       <label class="col-sm-2 control-label"> Enter Destination </label>
+       <input type="text" name="destination">
+     </br>
+   </br>
+ </div>
+
+   <div class="form-group">
+       <label class="col-sm-2 control-label"> Distance Covered </label>
+       <input type="text" name="distance_covered">
+     </br>
+   </br>
+ </div>
+
+
+      <input type="submit" value="Submit">
+  </form>
+
+
+
+   <div id=address>  Distance and Address
+   </br>
+ <div id=distance1text>Distance From Origin to Given Point</div>
+     <div id=distance1></div>
+   </br>
+ <div id=distance2text>Distance From Given Point to Destination"</div>
+     <div id=distance2></div>
+   </br>
+
+ <div id=distance3text>Total Distance from origin to Destination</div>
+    <div id=distance3></div>
+  </br>
+
+      <div id="otext"> Origin Address </div>
+      <div id="origin"> </div>
+    </br>
+
+      <div id="dtext"> Destination Address </div>
+      <div id="destination"> </div>
+    </br>
+
+    </div>
