@@ -1,8 +1,8 @@
 var map;
 function startMap(){
    map = new google.maps.Map(document.getElementById('map'), {
-         center: {lat: -34.397, lng: 150.644},
-         zoom: 8
+         center: {lat: 40.730610, lng: -73.935242},
+         zoom: 5
        });
 };
 
@@ -35,13 +35,13 @@ var that = this
     origin: that.start,
     destination: that.end,
     travelMode: 'DRIVING'
-  }, function(response, status) {
+     }, function(response, status) {
     if (status === 'OK') {
      that.route = response;
      directionsDisplay.setDirections(response);
      that.calculateDistance().findAddress()
     } else {
-      window.alert('Directions request failed due to ' + status);
+      window.alert('Directions request failed!');
     }
   })
 }
@@ -103,7 +103,7 @@ if(typeof this.start=== "string"){
         this.start_address = this.route.routes[0].legs[0].start_address
         this.end_address = this.route.routes[0].legs[0].end_address
         this.putMarkerOnRoute()
-}
+   }
 }
 
 
@@ -121,30 +121,29 @@ if(typeof this.start=== "string"){
   title: "here",
     })
 
-  function GetPointAtDistance(metres, polyline) {
-      // some awkward special cases
-      if (metres == 0) return polyline.getPath().getAt(0);
-      if (metres < 0) return null;
+  function GetPointAtDistance(meters, polyline) {
+      if (meters == 0) return polyline.getPath().getAt(0);
+      if (meters < 0) return null;
       if (polyline.getPath().getLength() < 2) return null;
       var dist=0;
       var olddist=0;
-      for (var i=1; (i < polyline.getPath().getLength() && dist < metres); i++) {
+      for (var i=1; (i < polyline.getPath().getLength() && dist < meters); i++) {
         olddist = dist;
         dist += google.maps.geometry.spherical.computeDistanceBetween(
                   polyline.getPath().getAt(i),
                   polyline.getPath().getAt(i-1)
                 );
       }
-      if (dist < metres) {
+      if (dist < meters) {
         return null;
       }
       var p1= polyline.getPath().getAt(i-2);
       var p2= polyline.getPath().getAt(i-1);
-      var m = (metres-olddist)/(dist-olddist);
+      var m = (meters-olddist)/(dist-olddist);
       return new google.maps.LatLng( p1.lat() + (p2.lat()-p1.lat())*m, p1.lng() + (p2.lng()-p1.lng())*m);
     }
-}
-this.appendDistance();
+  }
+  this.appendDistance();
 
 }
 
@@ -170,7 +169,7 @@ myMap.prototype.appendDistance = function(){
     var destination = document.getElementById("destination");
     destination.innerHTML = this.end_address;
 
-
-
+    $('.form').get(0).reset();
+    $('.form').get(1).reset();
 
 }

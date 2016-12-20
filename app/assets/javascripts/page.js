@@ -25,13 +25,13 @@ $( document ).ready(function() {
     type: "POST",
     data: $(this).serialize(),
     success: function(json) {
-        map_info = new myMap(json.start, json.end, json.distance_covered)
+      map_info = new myMap(json.start, json.end, json.distance_covered)
       initMap(map_info)
-    } // add errors here
-  })
-e.preventDefault();
-
-});
-
-
+    },
+    error: function(xhr){
+       var errors = $.parseJSON(xhr.responseText).errors
+     }
+    })
+    e.preventDefault();
+  });
 });

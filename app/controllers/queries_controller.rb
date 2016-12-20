@@ -12,7 +12,9 @@ class QueriesController < ApplicationController
        else
           response = {start: {lat: @query.start_lat, lng: @query.start_lng}, end: {lat: @query.end_lat, lng: @query.end_lng}, distance_covered: nil}
        end
-    render json: response.to_json
+        render json: response.to_json
+  else
+    render :json => { :errors => @query.errors.full_messages }
    end
   end
 

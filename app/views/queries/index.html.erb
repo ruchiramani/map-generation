@@ -1,11 +1,10 @@
-
- </br>
- </br>
-
- <button id="button1"> Enter Coordinates </button>
- <button id="button2"> Enter Address </button>
-
- <%= form_for Query.new,  :html => {:class => "form", :id=> "form1"} do |f| %>
+</br>
+<div align=center>
+ <button id="button1" > Enter Coordinates </button>
+ <button id="button2" > Enter Address </button>
+ </div>
+<div id="wrap">
+ <%= form_for Query.new,  :html => {:class => "form", :id=> "form1", :align=>"left"} do |f| %>
     <!-- start point -->
   </br>
 
@@ -30,7 +29,7 @@
 
          <!-- mid point -->
  </br>
-         <%= f.label :distance_covered %>
+         <%= f.label :distance_covered  %>
          <%= f.text_field :distance_covered %>
 
  </br>
@@ -40,7 +39,7 @@
  <% end %>
 
 
-<form action="/address_search" method="post" id="form2" class="form" role="form">
+<form action="/address_search" method="post" id="form2" class="form" role="form" >
    </br>
    <div class="form-group">
         <label class="col-sm-2 control-label"> Enter Origin </label>
@@ -56,7 +55,7 @@
  </div>
 
    <div class="form-group">
-       <label class="col-sm-2 control-label"> Distance Covered </label>
+       <label class="col-sm-2 control-label"> Enter Distance Covered in meters </label>
        <input type="text" name="distance_covered">
      </br>
    </br>
@@ -66,18 +65,16 @@
       <input type="submit" value="Submit">
   </form>
 
-
-
-   <div id=address>  Distance and Address
-   </br>
- <div id=distance1text>Distance From Origin to Given Point</div>
+   <div id=address>
+     <h4> Distance and Address </h4>
+ <div id=distance1text>Distance From Origin to Given Point in Meters</div>
      <div id=distance1></div>
    </br>
- <div id=distance2text>Distance From Given Point to Destination"</div>
+ <div id=distance2text>Distance From Given Point to Destination in Meters</div>
      <div id=distance2></div>
    </br>
 
- <div id=distance3text>Total Distance from origin to Destination</div>
+ <div id=distance3text>Total Distance from origin to Destination in Meters</div>
     <div id=distance3></div>
   </br>
 
@@ -90,3 +87,4 @@
     </br>
 
     </div>
+</div>
